@@ -1,0 +1,37 @@
+$v-ripple-color: #fff !default;
+$v-ripple-duration: 2s !default;
+$v-ripple-opacity: 0.32 !default;
+$v-ripple-scale-start: 0.32 !default;
+$v-ripple-scale-end: 24 !default;
+
+:root {
+  --v-ripple-color: #{$v-ripple-color};
+  --v-ripple-duration: #{$v-ripple-duration};
+  --v-ripple-opacity: #{$v-ripple-opacity};
+  --v-ripple-scale-start: #{$v-ripple-scale-start};
+  --v-ripple-scale-end: #{$v-ripple-scale-end};
+}
+
+.v-ripple {
+  position: absolute;
+  overflow: hidden;
+  transform: translateZ(0);
+  border-radius: inherit; /* inherit from parent (rounded buttons etc) */
+
+  &__wave {
+    position: absolute;
+    border-radius: 50%;
+    backface-visibility: hidden;
+    transform: scale(var(--v-ripple-scale-start, $v-ripple-scale-start));
+    background: var(--v-ripple-color, $v-ripple-color);
+    opacity: var(--v-ripple-opacity, $v-ripple-opacity);
+    animation: ripple var(--v-ripple-duration, $v-ripple-duration) forwards;
+  }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(var(--v-ripple-scale-end, $v-ripple-scale-end));
+    opacity: 0;
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "v-ripple-directive",
+  "version": "0.2.0",
+  "private": false,
+  "description": "Vue.js directive for ripple effect",
+  "keywords": [
+    "ripple",
+    "ripple-effect",
+    "vue"
+  ],
+  "homepage": "https://github.com/andrewvasilchuk/v-ripple-directive#readme",
+  "bugs": {
+    "url": "https://github.com/andrewvasilchuk/v-ripple-directive/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewvasilchuk/v-ripple-directive"
+  },
+  "license": "MIT",
+  "author": "Andrew Vasilchuk <andrew.d.vasilchuk@gmail.com>",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "main": "dist/v-ripple-directive.js",
+  "unpkg": "dist/v-ripple-directive.min.js",
+  "module": "dist/v-ripple-directive.esm.js",
+  "style": "dist/index.css",
+  "scripts": {
+    "build": "rm -rf dist/* && rollup -c build/rollup.config.prod.js && npm run build:css && npm run postcss",
+    "build:css": "node-sass ./src/index.scss ./dist/index.css --output-style compressed -x",
+    "dev": "rollup -c build/rollup.config.dev.js --watch",
+    "postcss": "postcss ./dist/index.css -u autoprefixer -o ./dist/index.css --no-map"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.6.0",
+    "autoprefixer": "^9.6.1",
+    "node-sass": "^4.12.0",
+    "postcss": "^7.0.18",
+    "postcss-cli": "^6.1.3",
+    "rollup": "^1.21.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-livereload": "^1.0.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-terser": "^5.1.1",
+    "rollup-plugin-vue": "^4.2.0",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.10"
+  }
+}
