@@ -1,6 +1,6 @@
 import defaultConfig from './config'
 
-let handler
+const ctx = '$_VRipple'
 
 export default {
   bind(el, binding) {
@@ -12,9 +12,17 @@ export default {
     if (oldValue) {
       const event = oldValue.event || defaultConfig.event
 
-      el.removeEventListener(event, handler)
+      el.removeEventListener(event, el[ctx].handler)
+
       init(el, binding)
     }
+  },
+  unbind(el, binding) {
+    const event = binding.value.event || defaultConfig.event
+
+    el.removeEventListener(event, el[ctx].handler)
+
+    delete el[ctx]
   },
 }
 
@@ -28,7 +36,10 @@ function init(el, binding) {
     event = value.event || event
   }
 
-  el.addEventListener(event, (handler = e => eventHandler(e, value)))
+  el[ctx] = {}
+  el[ctx].handler = e => eventHandler(e, value)
+
+  el.addEventListener(event, el[ctx].handler)
 }
 
 function eventHandler(e, options) {
