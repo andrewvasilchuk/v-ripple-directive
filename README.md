@@ -14,17 +14,29 @@
 
 ## 💿 Installation
 
-### Via NPM
+### 📦 Via NPM
 
 ```bash
 npm install v-ripple-directive --save
 ```
 
-### Via Yarn
+### 🧶 Via Yarn
 
 ```bash
 yarn add v-ripple-directive
 ```
+
+### 🖥️ Directly in browser
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/v-ripple-directive@0.2.0/dist/index.css"></link>
+<script src="https://unpkg.com/v-ripple-directive@0.2.0/dist/v-ripple-directive.min.js"></script>
+<script>
+  Vue.use(VRipple)
+</script>
+```
+
+> ⚠️ Don't forget to include `script` with Vue.js before installing the plugin.
 
 ## Initialization
 
@@ -127,7 +139,11 @@ export default {
   <section>
     <a href="#" v-ripple>Foo bar</a>
     <!-- v-ripple with custom options -->
-     <a href="#" v-ripple="{ event: 'mouseenter', color: 'purple', duration: '2s', opacity: '0.64', 'scale-start': '1', 'scale-end': '12' }">Foo bar</a>
+    <a
+      href="#"
+      v-ripple="{ event: 'mouseenter', color: 'purple', duration: '2s', opacity: '0.64', 'scale-start': '1', 'scale-end': '12' }"
+      >Foo bar</a
+    >
   </section>
 </template>
 ```
